@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: n8n-workflows-docs
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - workflows-db:/app/database
       - workflows-logs:/app/logs
