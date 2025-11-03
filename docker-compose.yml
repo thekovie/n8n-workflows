@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: n8n-workflows-docs
     ports:
-      - "7890:8000"
+      - "8000:8000"
     volumes:
       - workflows-db:/app/database
       - workflows-logs:/app/logs
@@ -20,7 +20,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.workflows-docs.rule=Host(`localhost`)"
-      - "traefik.http.services.workflows-docs.loadbalancer.server.port=7890"
+      - "traefik.http.services.workflows-docs.loadbalancer.server.port=8000"
 
 networks:
   workflows-network:
