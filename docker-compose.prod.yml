@@ -23,7 +23,7 @@ services:
       - "traefik.http.routers.workflows-docs.rule=Host(`workflows.yourdomain.com`)"
       - "traefik.http.routers.workflows-docs.tls=true"
       - "traefik.http.routers.workflows-docs.tls.certresolver=myresolver"
-      - "traefik.http.services.workflows-docs.loadbalancer.server.port=8000"
+      - "traefik.http.services.workflows-docs.loadbalancer.server.port=8790"
       - "traefik.http.middlewares.workflows-docs-auth.basicauth.users=admin:$$2y$$10$$..."  # Generate with htpasswd
 
   # Production reverse proxy

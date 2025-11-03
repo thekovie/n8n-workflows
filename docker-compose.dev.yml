@@ -16,9 +16,9 @@ services:
       - LOG_LEVEL=debug
       - DEBUG=true
       - RELOAD=true
-    command: ["python", "run.py", "--host", "0.0.0.0", "--port", "8000", "--dev"]
+    command: ["python", "run.py", "--host", "0.0.0.0", "--port", "8790", "--dev"]
     ports:
-      - "8000:8000"
+      - "8790:8790"
       - "8001:8001"  # Alternative port for testing
     profiles: []  # Enable by default
 

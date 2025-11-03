@@ -507,7 +507,7 @@ class EnhancedAPI:
         conn.close()
         return related
     
-    def run(self, host: str = "127.0.0.1", port: int = 8000, debug: bool = False):
+    def run(self, host: str = "127.0.0.1", port: int = 8790, debug: bool = False):
         """Run the enhanced API server"""
         uvicorn.run(
             self.app,
@@ -521,6 +521,6 @@ if __name__ == "__main__":
     api = EnhancedAPI()
     print("🚀 Starting Enhanced N8N Workflows API...")
     print("📊 Features: Advanced search, recommendations, analytics, community features")
-    print("🌐 API Documentation: http://127.0.0.1:8000/docs")
+    print("🌐 API Documentation: http://127.0.0.1:8790/docs")
     
     api.run(debug=True)

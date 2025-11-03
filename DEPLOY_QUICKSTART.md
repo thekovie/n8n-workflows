@@ -16,7 +16,7 @@ This guide provides rapid deployment instructions for the N8N Workflows Document
 - Starts the application with Docker Compose
 - Performs health checks
 - Opens browser automatically
-- Accessible at: http://localhost:8000
+- Accessible at: http://localhost:8790
 
 ### Option 2: Manual Docker Compose
 
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 python run.py
 
 # Start production server
-python run.py --host 0.0.0.0 --port 8000
+python run.py --host 0.0.0.0 --port 8790
 ```
 
 ### With Environment Configuration
@@ -106,7 +106,7 @@ helm uninstall workflows-docs --namespace n8n-workflows
 |----------|-------------|---------|
 | `ENVIRONMENT` | Deployment environment | `development` |
 | `HOST` | Server host | `127.0.0.1` |
-| `PORT` | Server port | `8000` |
+| `PORT` | Server port | `8790` |
 | `LOG_LEVEL` | Logging level | `info` |
 
 ### Environment Files
@@ -119,20 +119,20 @@ helm uninstall workflows-docs --namespace n8n-workflows
 
 ```bash
 # Quick health check
-curl http://localhost:8000/api/stats
+curl http://localhost:8790/api/stats
 
 # Detailed health check with script
-./scripts/health-check.sh http://localhost:8000
+./scripts/health-check.sh http://localhost:8790
 ```
 
 ## 🔍 Access Points
 
 Once deployed, access the application at:
 
-- **Main Interface**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/docs
-- **API Stats**: http://localhost:8000/api/stats
-- **Health Check**: http://localhost:8000/api/stats
+- **Main Interface**: http://localhost:8790
+- **API Documentation**: http://localhost:8790/docs
+- **API Stats**: http://localhost:8790/api/stats
+- **Health Check**: http://localhost:8790/api/stats
 
 ## 🛠️ Troubleshooting
 

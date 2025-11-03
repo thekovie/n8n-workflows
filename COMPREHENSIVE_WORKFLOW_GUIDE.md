@@ -165,7 +165,7 @@ pip install -r requirements.txt
 # Start the platform
 python run.py
 
-# Access at http://localhost:8000
+# Access at http://localhost:8790
 ```
 
 ### 2. Import Workflows

@@ -40,7 +40,7 @@ jobs:
     - name: Test Docker image
       run: |
         # Test container starts successfully
-        docker run --name test-container -d -p 8002:8000 workflows-doc:test
+        docker run --name test-container -d -p 8002:8790 workflows-doc:test
         
         # Wait for container to be ready
         sleep 15
@@ -64,7 +64,7 @@ jobs:
         sleep 20
         
         # Test API endpoint
-        curl -f http://localhost:8000/api/stats || exit 1
+        curl -f http://localhost:8790/api/stats || exit 1
         
         # Test with development override
         docker compose -f docker-compose.yml -f docker-compose.dev.yml down
@@ -74,7 +74,7 @@ jobs:
         sleep 20
         
         # Test development endpoint
-        curl -f http://localhost:8000/api/stats || exit 1
+        curl -f http://localhost:8790/api/stats || exit 1
         
         # Cleanup
         docker compose down

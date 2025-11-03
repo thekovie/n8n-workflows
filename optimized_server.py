@@ -389,7 +389,7 @@ class OptimizedWorkflowServer:
             except Exception as e:
                 raise HTTPException(status_code=500, detail=f"Categories error: {str(e)}")
     
-    def run(self, host: str = "127.0.0.1", port: int = 8000, workers: int = 1):
+    def run(self, host: str = "127.0.0.1", port: int = 8790, workers: int = 1):
         """Run optimized server"""
         print("🚀 Starting Optimized N8N Workflows Server...")
         print(f"📊 Database: {self.db_path}")

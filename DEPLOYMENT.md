@@ -57,7 +57,7 @@ docker build -t workflows-doc:latest .
 # Run container
 docker run -d \
   --name n8n-workflows-docs \
-  -p 8000:8000 \
+  -p 8790:8790 \
   -v $(pwd)/database:/app/database \
   -v $(pwd)/logs:/app/logs \
   -e ENVIRONMENT=production \
@@ -79,7 +79,7 @@ pip install -r requirements.txt
 python run.py --dev
 
 # Production mode
-python run.py --host 0.0.0.0 --port 8000
+python run.py --host 0.0.0.0 --port 8790
 ```
 
 #### Production with Gunicorn
@@ -88,7 +88,7 @@ python run.py --host 0.0.0.0 --port 8000
 pip install gunicorn
 
 # Start with gunicorn
-gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 api_server:app
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8790 api_server:app
 ```
 
 ### 4. Kubernetes Deployment
@@ -118,7 +118,7 @@ helm install n8n-workflows-docs ./helm/workflows-docs
 | `ENVIRONMENT` | Deployment environment | `development` | No |
 | `LOG_LEVEL` | Logging level | `info` | No |
 | `HOST` | Bind host | `127.0.0.1` | No |
-| `PORT` | Bind port | `8000` | No |
+| `PORT` | Bind port | `8790` | No |
 | `DATABASE_PATH` | SQLite database path | `database/workflows.db` | No |
 | `WORKFLOWS_PATH` | Workflows directory | `workflows` | No |
 | `ENABLE_METRICS` | Enable Prometheus metrics | `false` | No |
@@ -217,7 +217,7 @@ deploy:
 python run.py --reindex
 
 # Or via API
-curl -X POST http://localhost:8000/api/reindex
+curl -X POST http://localhost:8790/api/reindex
 ```
 
 ### 3. Caching Headers
@@ -239,10 +239,10 @@ http:
 ```bash
 # Docker health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/api/stats || exit 1
+    CMD curl -f http://localhost:8790/api/stats || exit 1
 
 # Manual health check
-curl http://localhost:8000/api/stats
+curl http://localhost:8790/api/stats
 ```
 
 ### 2. Logs
@@ -326,7 +326,7 @@ docker compose up --scale workflows-docs=3
 ```yaml
 # Traefik load balancing
 labels:
-  - "traefik.http.services.workflows-docs.loadbalancer.server.port=8000"
+  - "traefik.http.services.workflows-docs.loadbalancer.server.port=8790"
   - "traefik.http.services.workflows-docs.loadbalancer.sticky=true"
 ```
 
@@ -346,10 +346,10 @@ labels:
 2. **Port already in use**
    ```bash
    # Check what's using the port
-   lsof -i :8000
+   lsof -i :8790
    
    # Use different port
-   docker compose up -d -p 8001:8000
+   docker compose up -d -p 8001:8790
    ```
 
 3. **Out of memory**

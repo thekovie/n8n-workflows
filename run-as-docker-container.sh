@@ -55,7 +55,7 @@ attempt=1
 while [[ $attempt -le $max_attempts ]]; do
     log "Health check attempt $attempt/$max_attempts"
     
-    if curl -s -f http://localhost:8000/api/stats > /dev/null 2>&1; then
+    if curl -s -f http://localhost:8790/api/stats > /dev/null 2>&1; then
         success "Application is ready!"
         break
     fi
@@ -73,9 +73,9 @@ done
 success "N8N Workflows Documentation Platform is running!"
 echo
 echo "🌐 Access URLs:"
-echo "   Main Interface: http://localhost:8000"
-echo "   API Documentation: http://localhost:8000/docs"
-echo "   API Stats: http://localhost:8000/api/stats"
+echo "   Main Interface: http://localhost:8790"
+echo "   API Documentation: http://localhost:8790/docs"
+echo "   API Stats: http://localhost:8790/api/stats"
 echo
 echo "📊 Container Status:"
 docker compose ps
@@ -85,7 +85,7 @@ echo "🛑 To stop: docker compose down"
 
 # Open browser based on OS
 open_browser() {
-    local url="http://localhost:8000"
+    local url="http://localhost:8790"
     
     case "$OSTYPE" in
         darwin*)

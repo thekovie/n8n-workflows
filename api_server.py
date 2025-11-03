@@ -520,7 +520,7 @@ def create_static_directory():
     static_dir.mkdir(exist_ok=True)
     return static_dir
 
-def run_server(host: str = "127.0.0.1", port: int = 8000, reload: bool = False):
+def run_server(host: str = "127.0.0.1", port: int = 8790, reload: bool = False):
     """Run the FastAPI server."""
     # Ensure static directory exists
     create_static_directory()
@@ -571,7 +571,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='N8N Workflow Documentation API Server')
     parser.add_argument('--host', default='127.0.0.1', help='Host to bind to')
-    parser.add_argument('--port', type=int, default=8000, help='Port to bind to')
+    parser.add_argument('--port', type=int, default=8790, help='Port to bind to')
     parser.add_argument('--reload', action='store_true', help='Enable auto-reload for development')
     
     args = parser.parse_args()
